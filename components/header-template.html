@@ -1,0 +1,67 @@
+<!-- Header Template for GlimmerGlow Website -->
+<header data-role="Header" class="header-header">
+  <nav class="header-nav">
+    <div class="header-container1">
+      <a href="index.html" class="header-navlink10 Large">
+        Glimmer &amp; Glow Paint Parties
+      </a>
+      <div class="header-menu1">
+        <a href="index.html" class="header-navlink11 Large">Home</a>
+        <div class="header-menu2">
+          <a href="contact.html" class="header-navlink12 Large">Contact</a>
+          <a href="index.html" class="header-navlink13 Large">Events</a>
+          <a href="index.html#testimonials" class="header-navlink14 Large">Testimonials</a>
+          <a href="shop.html" class="header-navlink15 Large">Shop</a>
+        </div>
+      </div>
+      <div class="header-container2">
+        <div class="header-container3">
+          <div class="action-button-container">
+            <!-- This container will be replaced with specific action buttons per page -->
+          </div>
+        </div>
+        <div data-role="BurgerMenu" class="header-burger-menu">
+          <svg viewBox="0 0 1024 1024" class="header-icon1">
+            <path d="M128 256h768v86h-768v-86zM128 554v-84h768v84h-768zM128 768v-86h768v86h-768z"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div data-role="MobileMenu" class="header-mobile-menu">
+    <div class="header-top">
+      <a href="index.html" class="header-navlink16 Large">Glimmer &amp; Glow Paint Parties</a>
+      <div data-role="CloseMobileMenu" class="header-close-menu">
+        <svg viewBox="0 0 1024 1024" class="header-icon3">
+          <path d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="header-mid">
+      <div class="header-menu3">
+        <a href="index.html" class="header-navlink17 Large">Home</a>
+        <a href="contact.html" class="header-navlink18 Large">Contact</a>
+        <a href="shop.html" class="header-navlink19 Large">Shop</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- JavaScript for Mobile Menu Toggle -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const burgerMenu = document.querySelector('[data-role="BurgerMenu"]');
+    const mobileMenu = document.querySelector('[data-role="MobileMenu"]');
+    const closeMenu = document.querySelector('[data-role="CloseMobileMenu"]');
+
+    if (burgerMenu && mobileMenu && closeMenu) {
+      burgerMenu.addEventListener('click', () => {
+        mobileMenu.classList.add('active');
+      });
+
+      closeMenu.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+      });
+    }
+  });
+</script> 

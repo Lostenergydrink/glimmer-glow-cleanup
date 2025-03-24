@@ -1,0 +1,250 @@
+import fs from 'fs/promises';
+import path from 'path';
+import crypto from 'crypto';
+import { fileLock } from './file-lock.js';
+import NodeCache from 'node-cache';
+
+const dataDir = path.join(process.cwd(), 'data');
+const PRODUCTS_FILE = path.join(dataDir, 'products.json');
+const TRANSACTIONS_FILE = path.join(dataDir, 'transactions.json');
+const SUBSCRIPTIONS_FILE = path.join(dataDir, 'subscriptions.json');
+
+// Initialize cache
+const cache = new NodeCache({ 
+    stdTTL: 300, // 5 minutes standard TTL
+    checkperiod: 60, // Check for expired entries every minute
+    useClones: false // Store references instead of copies
+});
+
+// Ensure data directory exists
+async function initializeDataStorage() {
+    try {
+        console.log('Initializing data storage...');
+        console.log('Data directory:', dataDir);
+        await fs.mkdir(dataDir, { recursive: true });
+        
+        // Initialize files if they don't exist
+        for (const file of [PRODUCTS_FILE, TRANSACTIONS_FILE, SUBSCRIPTIONS_FILE]) {
+            try {
+                console.log('Checking file:', file);
+                await fs.access(file);
+                console.log('File exists:', file);
+            } catch {
+                console.log('Creating file:', file);
+                await fs.writeFile(file, '[]');
+                console.log('File created:', file);
+            }
+        }
+    } catch (error) {
+        console.error('Failed to initialize data storage:', error);
+        throw error;
+    }
+}
+
+// Products
+export async function getProducts() {
+    // Try cache first
+    const cachedProducts = cache.get('products');
+    if (cachedProducts) {
+        return cachedProducts;
+    }
+
+    const { content: products, version } = await fileLock.readFileWithVersion(PRODUCTS_FILE);
+    
+    // Cache the results
+    cache.set('products', { products, version });
+    
+    return { products, version };
+}
+
+export async function getProduct(id) {
+    const { products } = await getProducts();
+    return products.find(p => p.id === id);
+}
+
+export async function createProduct(productData) {
+    console.log('Creating product with data:', productData);
+    try {
+        const { products, version } = await getProducts();
+        console.log('Current products:', products);
+        
+        const newProduct = {
+            id: crypto.randomUUID(),
+            ...productData,
+            createdAt: new Date().toISOString(),
+            version: 1
+        };
+        console.log('New product object:', newProduct);
+        
+        products.push(newProduct);
+        const newVersion = await fileLock.writeFileWithVersion(PRODUCTS_FILE, products, version);
+        
+        // Invalidate cache
+        cache.del('products');
+        
+        console.log('Product saved successfully');
+        return newProduct;
+    } catch (error) {
+        console.error('Error creating product:', error);
+        throw error;
+    }
+}
+
+export async function updateProduct(id, updates) {
+    let retries = 3;
+    while (retries > 0) {
+        try {
+            const { products, version } = await getProducts();
+            const index = products.findIndex(p => p.id === id);
+            
+            if (index === -1) throw new Error('Product not found');
+            
+            products[index] = {
+                ...products[index],
+                ...updates,
+                updatedAt: new Date().toISOString(),
+                version: (products[index].version || 0) + 1
+            };
+            
+            await fileLock.writeFileWithVersion(PRODUCTS_FILE, products, version);
+            
+            // Invalidate cache
+            cache.del('products');
+            
+            return products[index];
+        } catch (error) {
+            if (error.message === 'Stale data - file was modified' && retries > 1) {
+                console.log('Retrying update due to concurrent modification');
+                retries--;
+                await new Promise(resolve => setTimeout(resolve, 100));
+                continue;
+            }
+            throw error;
+        }
+    }
+    throw new Error('Failed to update product after retries');
+}
+
+export async function deleteProduct(id) {
+    let retries = 3;
+    while (retries > 0) {
+        try {
+            const { products, version } = await getProducts();
+            const filtered = products.filter(p => p.id !== id);
+            
+            await fileLock.writeFileWithVersion(PRODUCTS_FILE, filtered, version);
+            
+            // Invalidate cache
+            cache.del('products');
+            
+            break;
+        } catch (error) {
+            if (error.message === 'Stale data - file was modified' && retries > 1) {
+                console.log('Retrying delete due to concurrent modification');
+                retries--;
+                await new Promise(resolve => setTimeout(resolve, 100));
+                continue;
+            }
+            throw error;
+        }
+    }
+}
+
+export async function updateProductStock(id, quantity) {
+    let retries = 3;
+    while (retries > 0) {
+        try {
+            const { products, version } = await getProducts();
+            const product = products.find(p => p.id === id);
+            
+            if (!product) throw new Error('Product not found');
+            
+            const newQuantity = product.quantity - quantity;
+            if (newQuantity < 0) throw new Error('Insufficient stock');
+            
+            const updates = {
+                quantity: newQuantity,
+                version: (product.version || 0) + 1
+            };
+            
+            return await updateProduct(id, updates);
+        } catch (error) {
+            if (error.message === 'Stale data - file was modified' && retries > 1) {
+                console.log('Retrying stock update due to concurrent modification');
+                retries--;
+                await new Promise(resolve => setTimeout(resolve, 100));
+                continue;
+            }
+            throw error;
+        }
+    }
+    throw new Error('Failed to update stock after retries');
+}
+
+// Transactions
+export async function getTransactions() {
+    const data = await fs.readFile(TRANSACTIONS_FILE, 'utf-8');
+    return JSON.parse(data);
+}
+
+export async function createTransaction(transactionData) {
+    const transactions = await getTransactions();
+    const newTransaction = {
+        id: crypto.randomUUID(),
+        ...transactionData,
+        timestamp: new Date().toISOString()
+    };
+    
+    transactions.push(newTransaction);
+    await fs.writeFile(TRANSACTIONS_FILE, JSON.stringify(transactions, null, 2));
+    return newTransaction;
+}
+
+export async function getTransaction(id) {
+    const transactions = await getTransactions();
+    return transactions.find(t => t.id === id);
+}
+
+// Subscriptions
+export async function getSubscriptions() {
+    const data = await fs.readFile(SUBSCRIPTIONS_FILE, 'utf-8');
+    return JSON.parse(data);
+}
+
+export async function createSubscription(subscriptionData) {
+    const subscriptions = await getSubscriptions();
+    const newSubscription = {
+        id: crypto.randomUUID(),
+        ...subscriptionData,
+        status: 'active',
+        startDate: new Date().toISOString()
+    };
+    
+    subscriptions.push(newSubscription);
+    await fs.writeFile(SUBSCRIPTIONS_FILE, JSON.stringify(subscriptions, null, 2));
+    return newSubscription;
+}
+
+export async function cancelSubscription(id) {
+    const subscriptions = await getSubscriptions();
+    const index = subscriptions.findIndex(s => s.id === id);
+    
+    if (index === -1) throw new Error('Subscription not found');
+    
+    subscriptions[index] = {
+        ...subscriptions[index],
+        status: 'cancelled',
+        cancelDate: new Date().toISOString()
+    };
+    
+    await fs.writeFile(SUBSCRIPTIONS_FILE, JSON.stringify(subscriptions, null, 2));
+    return subscriptions[index];
+}
+
+export async function getSubscription(id) {
+    const subscriptions = await getSubscriptions();
+    return subscriptions.find(s => s.id === id);
+}
+
+// Initialize data storage on module load
+initializeDataStorage().catch(console.error);

@@ -1,0 +1,53 @@
+<!-- Navigation Template for GlimmerGlow Website -->
+<nav class="main-navigation">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="index.html">Glimmer &amp; Glow Paint Parties</a>
+    </div>
+    <div class="nav-links">
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="index.html#testimonials">Testimonials</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+      </ul>
+    </div>
+    <div class="nav-action">
+      <!-- This will be filled with action buttons specific to each page -->
+    </div>
+    <div class="mobile-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div class="mobile-menu">
+    <ul class="mobile-nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="index.html#testimonials">Testimonials</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- JavaScript for Mobile Menu Toggle -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    if (mobileMenuToggle && mobileMenu) {
+      mobileMenuToggle.addEventListener('click', function() {
+        mobileMenuToggle.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+      });
+    }
+  });
+</script> 

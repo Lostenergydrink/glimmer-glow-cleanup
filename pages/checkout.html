@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Checkout - Glimmer &amp; Glow Paint Parties</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&amp;display=swap" data-tag="font" />
+    <link rel="stylesheet" href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="../styles/components/navigation.css" />
+    <link rel="stylesheet" href="../styles/global/global.css" />
+    <link rel="stylesheet" href="../styles/global/style.css" />
+    <link rel="stylesheet" href="../styles/components/modal.css" />
+    <link rel="stylesheet" href="../styles/global/mobile-fixes.css" />
+    <link rel="stylesheet" href="../styles/global/responsive-fixes.css" />
+    <link rel="stylesheet" href="../styles/global/overflow-fix.css" />
+    <link rel="stylesheet" href="../styles/pages/checkout.css" />
+  </head>
+  <body>
+    <div class="checkout-container">
+      <!-- Header Template -->
+      <div data-template="header"></div>
+
+      <div class="checkout-main">
+        <div class="checkout-content">
+          <h1 class="checkout-title">Checkout</h1>
+          
+          <!-- Checkout Progress -->
+          <div class="checkout-progress">
+            <div class="checkout-step active" data-step="cart">
+              <div class="step-number">1</div>
+              <div class="step-name">Cart</div>
+            </div>
+            <div class="checkout-step" data-step="shipping">
+              <div class="step-number">2</div>
+              <div class="step-name">Shipping</div>
+            </div>
+            <div class="checkout-step" data-step="payment">
+              <div class="step-number">3</div>
+              <div class="step-name">Payment</div>
+            </div>
+            <div class="checkout-step" data-step="confirmation">
+              <div class="step-number">4</div>
+              <div class="step-name">Confirmation</div>
+            </div>
+          </div>
+          
+          <!-- Checkout Sections -->
+          <div class="checkout-sections">
+            <!-- Cart Review Step -->
+            <section class="checkout-section active" id="cart-section">
+              <h2>Review Your Cart</h2>
+              <div class="cart-review">
+                <div id="checkout-cart-items" class="checkout-cart-items">
+                  <!-- Cart items will be loaded here -->
+                </div>
+                
+                <div class="cart-totals">
+                  <div class="cart-total-row">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">$0.00</span>
+                  </div>
+                  <div class="cart-total-row">
+                    <span>Shipping:</span>
+                    <span id="cart-shipping">$0.00</span>
+                  </div>
+                  <div class="cart-total-row">
+                    <span>Tax:</span>
+                    <span id="cart-tax">$0.00</span>
+                  </div>
+                  <div class="cart-total-row grand-total">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                  </div>
+                </div>
+                
+                <div class="checkout-actions">
+                  <a href="/shop.html" class="secondary-button">Continue Shopping</a>
+                  <button id="proceed-to-shipping" class="primary-pink-button-button button">Proceed to Shipping</button>
+                </div>
+              </div>
+            </section>
+            
+            <!-- Shipping Step -->
+            <section class="checkout-section" id="shipping-section">
+              <h2>Shipping Information</h2>
+              <form id="shipping-form" class="checkout-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="firstName" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" name="lastName" required>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input type="text" id="address" name="address" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="address2">Address Line 2 (optional)</label>
+                  <input type="text" id="address2" name="address2">
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="state">State</label>
+                    <select id="state" name="state" required>
+                      <option value="">Select State...</option>
+                      <option value="AL">Alabama</option>
+                      <option value="AK">Alaska</option>
+                      <!-- More states would be listed here -->
+                      <option value="WY">Wyoming</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="zip">ZIP Code</label>
+                    <input type="text" id="zip" name="zip" required>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="shipping-options">
+                  <h3>Shipping Options</h3>
+                  <div class="shipping-option">
+                    <input type="radio" id="standard-shipping" name="shippingMethod" value="standard" checked>
+                    <label for="standard-shipping">
+                      <span class="shipping-name">Standard Shipping (3-5 business days)</span>
+                      <span class="shipping-price">$5.99</span>
+                    </label>
+                  </div>
+                  <div class="shipping-option">
+                    <input type="radio" id="express-shipping" name="shippingMethod" value="express">
+                    <label for="express-shipping">
+                      <span class="shipping-name">Express Shipping (2-3 business days)</span>
+                      <span class="shipping-price">$12.99</span>
+                    </label>
+                  </div>
+                  <div class="shipping-option">
+                    <input type="radio" id="overnight-shipping" name="shippingMethod" value="overnight">
+                    <label for="overnight-shipping">
+                      <span class="shipping-name">Overnight Shipping (1 business day)</span>
+                      <span class="shipping-price">$24.99</span>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="checkout-actions">
+                  <button type="button" id="back-to-cart" class="secondary-button">Back to Cart</button>
+                  <button type="submit" id="proceed-to-payment" class="primary-pink-button-button button">Proceed to Payment</button>
+                </div>
+              </form>
+            </section>
+            
+            <!-- Payment Step -->
+            <section class="checkout-section" id="payment-section">
+              <h2>Payment Information</h2>
+              <div class="payment-options">
+                <div class="payment-option">
+                  <input type="radio" id="credit-card" name="paymentMethod" value="credit-card" checked>
+                  <label for="credit-card">Credit Card</label>
+                </div>
+                <div class="payment-option">
+                  <input type="radio" id="paypal" name="paymentMethod" value="paypal">
+                  <label for="paypal">PayPal</label>
+                </div>
+              </div>
+              
+              <!-- Credit Card Form -->
+              <form id="credit-card-form" class="checkout-form payment-form">
+                <div class="form-group">
+                  <label for="card-number">Card Number</label>
+                  <div class="card-input-wrapper">
+                    <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+                    <div class="card-icons">
+                      <i class="fab fa-cc-visa"></i>
+                      <i class="fab fa-cc-mastercard"></i>
+                      <i class="fab fa-cc-amex"></i>
+                      <i class="fab fa-cc-discover"></i>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="card-name">Name on Card</label>
+                    <input type="text" id="card-name" name="cardName" required>
+                  </div>
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="expiry-date">Expiry Date</label>
+                    <input type="text" id="expiry-date" name="expiryDate" placeholder="MM/YY" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" required>
+                    <div class="cvv-hint">3 or 4 digits, usually on the back of your card</div>
+                  </div>
+                </div>
+                
+                <div class="checkout-actions">
+                  <button type="button" id="back-to-shipping" class="secondary-button">Back to Shipping</button>
+                  <button type="submit" id="place-order" class="primary-pink-button-button button">Place Order</button>
+                </div>
+              </form>
+              
+              <!-- PayPal Button (hidden initially) -->
+              <div id="paypal-container" class="payment-form" style="display: none;">
+                <div id="paypal-button-container"></div>
+                <div class="checkout-actions">
+                  <button type="button" id="back-to-shipping-paypal" class="secondary-button">Back to Shipping</button>
+                </div>
+              </div>
+            </section>
+            
+            <!-- Confirmation Step -->
+            <section class="checkout-section" id="confirmation-section">
+              <div class="order-confirmation">
+                <div class="confirmation-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Thank You for Your Order!</h2>
+                <p>Your order has been successfully placed.</p>
+                <div class="order-details">
+                  <p>Order Number: <span id="order-number">GG123456</span></p>
+                  <p>A confirmation email has been sent to <span id="order-email">your@email.com</span></p>
+                </div>
+                <div class="order-summary">
+                  <h3>Order Summary</h3>
+                  <div id="order-items"></div>
+                  <div class="order-total">
+                    <div class="total-row">
+                      <span>Total:</span>
+                      <span id="order-total">$0.00</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="checkout-actions">
+                  <a href="/shop.html" class="secondary-button">Continue Shopping</a>
+                  <a href="/account/orders.html" class="primary-pink-button-button button">View My Orders</a>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Template -->
+      <div data-template="footer"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../scripts/utils/template-loader.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+    <script src="../scripts/shop/checkout.js" type="module"></script>
+  </body>
+</html> 

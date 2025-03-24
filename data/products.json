@@ -1,0 +1,84 @@
+[
+    {
+        "id": "pkg-basic",
+        "name": "Basic Package",
+        "description": "Perfect for a night out or special occasion. Includes expert makeup application and basic hair styling.",
+        "price": 75.00,
+        "quantity": 999999,
+        "imageUrl": "/images/products/basic-package.png",
+        "createdAt": "2025-03-02T21:58:00.000Z",
+        "type": "package"
+    },
+    {
+        "id": "pkg-premium",
+        "name": "Premium Package",
+        "description": "Full glam transformation with premium products, advanced techniques, and complete hair styling.",
+        "price": 125.00,
+        "quantity": 999999,
+        "imageUrl": "/images/products/premium-package.png",
+        "createdAt": "2025-03-02T21:58:00.000Z",
+        "type": "package"
+    },
+    {
+        "id": "pkg-bridal",
+        "name": "Bridal Package",
+        "description": "Make your special day perfect with our comprehensive bridal beauty service including trials and day-of styling.",
+        "price": 250.00,
+        "quantity": 999999,
+        "imageUrl": "/images/products/bridal-package.png",
+        "createdAt": "2025-03-02T21:58:00.000Z",
+        "type": "package"
+    },
+    {
+        "id": "pkg-group",
+        "name": "Group Package",
+        "description": "Perfect for bridal parties or special events. Includes styling for up to 4 people.",
+        "price": 280.00,
+        "quantity": 999999,
+        "imageUrl": "/images/products/group-package.png",
+        "createdAt": "2025-03-02T21:58:00.000Z",
+        "type": "package"
+    },
+    {
+        "id": "pkg-photoshoot",
+        "name": "Photoshoot Package",
+        "description": "Camera-ready makeup and hair styling optimized for photography and video.",
+        "price": 150.00,
+        "quantity": 999999,
+        "imageUrl": "/images/products/photoshoot-package.png",
+        "createdAt": "2025-03-02T21:58:00.000Z",
+        "type": "package"
+    },
+    {
+        "id": "pkg-class",
+        "name": "Makeup Class",
+        "description": "Learn professional makeup techniques in a private one-on-one session.",
+        "price": 200.00,
+        "quantity": 999999,
+        "imageUrl": "/images/products/class-package.png",
+        "createdAt": "2025-03-02T21:58:00.000Z",
+        "type": "package"
+    },
+    {
+        "id": "sub-monthly",
+        "name": "Monthly Beauty Box",
+        "description": "Monthly subscription box with curated beauty products and exclusive tips.",
+        "price": 45.00,
+        "quantity": 999999,
+        "imageUrl": "/images/products/monthly-subscription.png",
+        "createdAt": "2025-03-02T21:58:00.000Z",
+        "type": "subscription",
+        "interval": "monthly"
+    },
+    {
+        "id": "sub-quarterly",
+        "name": "Quarterly Glam Box",
+        "description": "Premium quarterly subscription with full-size products and seasonal beauty guides.",
+        "price": 120.00,
+        "quantity": 999999,
+        "imageUrl": "/images/products/quarterly-subscription.png",
+        "createdAt": "2025-03-02T21:58:00.000Z",
+        "type": "subscription",
+        "interval": "quarterly"
+    }
+]

@@ -1,0 +1,385 @@
+/* 
+ * ABOUT PAGE SPECIFIC STYLES
+ * This file contains styles specific to the about.html page.
+/* Remember to use global utility classes from global.css for common styles */
+ * Global styles, modal styles, and calendar styles have been moved to separate files.
+ */
+
+/* ------------------- ABOUT HERO SECTION ------------------- */
+.about-hero {
+  height: 60vh;
+  min-height: 400px;
+  background-image: url('../assets/images/about-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+/* ------------------- ABOUT SECTION ------------------- */
+.about-section {
+  padding: 5rem 1rem;
+  background-color: white;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(310deg, #7928ca, #ff0080);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--dl-color-secondary-500);
+}
+
+/* ------------------- STORY SECTION ------------------- */
+.story-section {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.story-image {
+  flex: 1;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.story-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.story-content {
+  flex: 1;
+}
+
+.story-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--dl-color-secondary-900);
+}
+
+.story-content p {
+  margin-bottom: 1.5rem;
+  color: var(--dl-color-secondary-600);
+  line-height: 1.6;
+}
+
+/* ------------------- MISSION SECTION ------------------- */
+.mission-section {
+  background-color: var(--dl-color-secondary-50);
+  padding: 5rem 1rem;
+  text-align: center;
+}
+
+.mission-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.mission-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--dl-color-primary-500);
+}
+
+.mission-title {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: var(--dl-color-secondary-900);
+}
+
+.mission-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  color: var(--dl-color-secondary-700);
+}
+
+/* ------------------- TEAM SECTION ------------------- */
+.team-section {
+  padding: 5rem 1rem;
+  background-color: white;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.team-member {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+}
+
+.member-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1.5rem;
+  border: 5px solid white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.member-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--dl-color-secondary-900);
+}
+
+.member-title {
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  color: var(--dl-color-primary-500);
+}
+
+.member-bio {
+  font-size: 0.875rem;
+  color: var(--dl-color-secondary-600);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dl-color-secondary-100);
+  color: var(--dl-color-secondary-700);
+  transition: all 0.2s ease;
+}
+
+.social-link:hover {
+  background: linear-gradient(310deg, #7928ca, #ff0080);
+  color: white;
+}
+
+/* ------------------- VALUES SECTION ------------------- */
+.values-section {
+  padding: 5rem 1rem;
+  background-color: var(--dl-color-secondary-50);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.value-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.value-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--dl-color-primary-500);
+}
+
+.value-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--dl-color-secondary-900);
+}
+
+.value-description {
+  color: var(--dl-color-secondary-600);
+  line-height: 1.6;
+}
+
+/* ------------------- CTA SECTION ------------------- */
+.cta-section {
+  padding: 5rem 1rem;
+  background: linear-gradient(310deg, #7928ca, #ff0080);
+  color: white;
+  text-align: center;
+}
+
+.cta-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-text {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.cta-button-primary {
+  background-color: white;
+  color: var(--dl-color-primary-500);
+}
+
+.cta-button-primary:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+.cta-button-secondary {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.cta-button-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ------------------- RESPONSIVE STYLES ------------------- */
+@media (max-width: 991px) {
+  .story-section {
+    flex-direction: column;
+  }
+  
+  .story-image, .story-content {
+    width: 100%;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-hero {
+    height: 50vh;
+  }
+  
+  .hero-title {
+    font-size: 1.75rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .team-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-section, .mission-section, .team-section, .values-section, .cta-section {
+    padding: 3rem 1rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .member-image {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .cta-button {
+    width: 100%;
+  }
+} 

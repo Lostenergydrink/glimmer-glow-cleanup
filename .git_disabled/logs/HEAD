@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 7565b7958bf0c6e216ca637f9eaae71a60fdb086 Lostenergydrink <pdennison1991@gmail.com> 1742509505 -0500	clone: from github.com:Greedalox/glimmer-glow-website.git
+7565b7958bf0c6e216ca637f9eaae71a60fdb086 7565b7958bf0c6e216ca637f9eaae71a60fdb086 Lostenergydrink <pdennison1991@gmail.com> 1742552133 -0500	checkout: moving from main to repo-reorganization
+7565b7958bf0c6e216ca637f9eaae71a60fdb086 b71cbc2c985e866cafd16b6d6236cab0d9833402 Lostenergydrink <pdennison1991@gmail.com> 1742553788 -0500	commit: Update server routes to reflect new directory structure
+b71cbc2c985e866cafd16b6d6236cab0d9833402 7c714ba86c25481bf4dbc9ec876b6e7348fbe3a1 Lostenergydrink <pdennison1991@gmail.com> 1742553802 -0500	commit: Update task list and reorganization tracker with progress
+7c714ba86c25481bf4dbc9ec876b6e7348fbe3a1 e02eca3ee479bb059bfe048fabfdb9d9f62a771e Lostenergydrink <pdennison1991@gmail.com> 1742553978 -0500	commit: Update reorganization tracker and add test script for pages

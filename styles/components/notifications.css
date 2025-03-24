@@ -1,0 +1,186 @@
+/* 
+ * Notification Component Styles
+ * Styles for toast notifications and alerts
+ */
+
+/* Notifications Container */
+.notifications-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-width: 350px;
+  width: calc(100% - 40px);
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Notification Base */
+.notification {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.notification.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.notification.hiding {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+/* Notification Content */
+.notification-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-right: 20px;
+}
+
+.notification-icon {
+  flex-shrink: 0;
+  font-size: 1.2rem;
+}
+
+.notification-message {
+  flex-grow: 1;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #333;
+}
+
+/* Close Button */
+.notification-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.2s;
+}
+
+.notification-close:hover {
+  color: #666;
+}
+
+/* Progress Bar */
+.notification-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.notification-progress::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: width linear;
+}
+
+/* Notification Types */
+.notification-info {
+  border-left: 4px solid #3498db;
+}
+
+.notification-info .notification-progress::before {
+  background-color: #3498db;
+}
+
+.notification-success {
+  border-left: 4px solid #2ecc71;
+}
+
+.notification-success .notification-progress::before {
+  background-color: #2ecc71;
+}
+
+.notification-warning {
+  border-left: 4px solid #f39c12;
+}
+
+.notification-warning .notification-progress::before {
+  background-color: #f39c12;
+}
+
+.notification-error {
+  border-left: 4px solid #e74c3c;
+}
+
+.notification-error .notification-progress::before {
+  background-color: #e74c3c;
+}
+
+/* Positions */
+.notifications-container.top-right {
+  top: 20px;
+  right: 20px;
+  bottom: auto;
+  left: auto;
+}
+
+.notifications-container.top-left {
+  top: 20px;
+  left: 20px;
+  bottom: auto;
+  right: auto;
+}
+
+.notifications-container.bottom-left {
+  bottom: 20px;
+  left: 20px;
+  top: auto;
+  right: auto;
+}
+
+.notifications-container.top-center {
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: auto;
+  right: auto;
+}
+
+.notifications-container.bottom-center {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: auto;
+  right: auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .notifications-container {
+    bottom: 10px;
+    right: 10px;
+    max-width: calc(100% - 20px);
+    width: calc(100% - 20px);
+  }
+  
+  .notification {
+    padding: 12px;
+  }
+  
+  .notification-message {
+    font-size: 0.9rem;
+  }
+} 

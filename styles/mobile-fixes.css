@@ -1,0 +1,102 @@
+/* Fix layout shift */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Container fixes */
+.home-container10 {
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Navigation fixes */
+.header-menu3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+.header-menu3 a {
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+  color: var(--dl-color-secondary-700);
+  transition: background-color 0.3s ease;
+}
+
+/* Calendar fixes */
+.calendar-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 10px;
+}
+
+.calendar {
+  min-width: 800px;
+  border-collapse: collapse;
+}
+
+/* Facebook reviews fixes */
+.facebook-review-frame {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 768px) {
+  .calendar td {
+    height: 80px;
+    font-size: 14px;
+    padding: 4px;
+  }
+
+  .event-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .header-mobile-menu {
+    padding: 15px;
+  }
+
+  .facebook-review-frame {
+    height: auto;
+    min-height: 250px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header-menu3 a {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .calendar td {
+    height: 60px;
+    font-size: 12px;
+    padding: 2px;
+  }
+
+  .event-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Fix iOS 100vh issue */
+@supports (-webkit-touch-callout: none) {
+  .header-mobile-menu {
+    height: -webkit-fill-available;
+  }
+}

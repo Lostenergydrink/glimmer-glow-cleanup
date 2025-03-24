@@ -1,0 +1,127 @@
+/* 
+ * GLOBAL CSS STYLES
+ * This file contains global styles that apply across all pages.
+ * These styles have been consolidated from multiple CSS files to reduce duplication.
+ */
+
+/* ------------------- RESET & GLOBAL STYLES ------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Common link styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Common image styles */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Common container styles */
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ------------------- UTILITY CLASSES ------------------- */
+
+/* Flex utilities */
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+/* Spacing utilities */
+.margin-bottom-sm {
+  margin-bottom: var(--dl-space-space-unit);
+}
+
+.margin-bottom-md {
+  margin-bottom: var(--dl-space-space-doubleunit);
+}
+
+.margin-bottom-lg {
+  margin-bottom: var(--dl-space-space-tripleunit);
+}
+
+/* ------------------- VENDOR PREFIX NORMALIZATION ------------------- */
+
+/* Webkit scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Mobile touch handling */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Text styling */
+.gradient-text {
+  background-image: linear-gradient(310deg, #7928ca, #ff0080);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ------------------- MODAL COMMON STYLES ------------------- */
+/* Note: More specific modal styles are in components/modal.css */
+
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* Mobile menu state */
+body.mobile-menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+} 

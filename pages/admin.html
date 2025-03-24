@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G&G Admin Panel</title>
+    <link rel="stylesheet" href="../styles/global/global.css">
+    <link rel="stylesheet" href="../styles/global/style.css">
+    <link rel="stylesheet" href="../styles/components/modal.css">
+    <link rel="stylesheet" href="../styles/components/calendar.css">
+    <style>
+        /* Stock level indicators */
+        .stock-indicator {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 8px;
+            color: white;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-bottom: none;
+            margin-right: 5px;
+        }
+
+        .tab.active {
+            border-color: #ccc;
+            border-radius: 5px 5px 0 0;
+            background-color: #f9f9f9;
+            margin-bottom: -1px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-container">
+        <nav class="admin-nav">
+            <h1>G&G Admin Panel</h1>
+            <div class="nav-links">
+                <a href="#paypal" class="active">PayPal Settings</a>
+                <a href="#shop">Shop Manager</a>
+                <a href="#categories">Categories</a>
+                <a href="#subscriptions">Subscriptions</a>
+                <a href="#transactions">Transaction History</a>
+                <a href="#gallery">Gallery Manager</a>
+                <a href="#calendar">Calendar Events</a>
+                <a href="#users">Users</a>
+            </div>
+        </nav>
+
+        <main class="admin-content">
+            <section id="paypal" class="section">
+                <h2>PayPal Configuration</h2>
+                <form id="paypalForm">
+                    <div class="form-group">
+                        <label for="clientId">Client ID:</label>
+                        <input type="text" id="clientId" name="clientId" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientSecret">Client Secret:</label>
+                        <input type="password" id="clientSecret" name="clientSecret" required>
+                    </div>
+                    <button type="submit">Update PayPal Settings</button>
+                </form>
+            </section>
+
+            <section id="shop" class="section">
+                <h2>Shop Manager</h2>
+                <div class="tabs">
+                    <div class="tab active" data-tab="products">Products</div>
+                    <div class="tab" data-tab="bulk-upload">Bulk Upload</div>
+                </div>
+
+                <div id="products-tab" class="tab-content active">
+                    <form id="productForm" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="productName">Product Name:</label>
+                            <input type="text" id="productName" name="name" required autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="productDescription">Description:</label>
+                            <textarea id="productDescription" name="description" required autocomplete="off"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="productPrice">Price ($):</label>
+                            <input type="number" id="productPrice" name="price" min="0" step="0.01" required
+                                autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="productQuantity">Quantity in Stock:</label>
+                            <input type="number" id="productQuantity" name="quantity" min="0" required
+                                autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="productCategories">Categories:</label>
+                            <select id="productCategories" name="categories" multiple>
+                                <!-- Categories will be populated dynamically -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="productImage">Product Image:</label>
+                            <input type="file" id="productImage" name="image" accept="image/*" required>
+                        </div>
+                        <button type="submit">Add Product</button>
+                    </form>
+                    <div id="productList" class="product-list"></div>
+                </div>
+
+                <div id="bulk-upload-tab" class="tab-content">
+                    <h3>Bulk Product Upload</h3>
+                    <p>Upload a CSV file with product information.</p>
+                    <form id="bulkUploadForm">
+                        <div class="form-group">
+                            <label for="bulkFile">CSV File:</label>
+                            <input type="file" id="bulkFile" name="bulkFile" accept=".csv" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bulkCategory">Assign Category:</label>
+                            <select id="bulkCategory" name="bulkCategory">
+                                <option value="">-- Select Category --</option>
+                                <!-- Categories will be populated dynamically -->
+                            </select>
+                        </div>
+                        <button type="submit">Upload Products</button>
+                    </form>
+                    <div class="template-download">
+                        <h4>CSV Template</h4>
+                        <p>Download our <a href="#" id="downloadTemplate">CSV template</a> to ensure your data is
+                            formatted correctly.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="categories" class="section">
+                <h2>Category Management</h2>
+                <form id="categoryForm">
+                    <div class="form-group">
+                        <label for="categoryName">Category Name:</label>
+                        <input type="text" id="categoryName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="categorySlug">Slug (URL-friendly name):</label>
+                        <input type="text" id="categorySlug" name="slug"
+                            placeholder="Optional - will be generated from name">
+                    </div>
+                    <div class="form-group">
+                        <label for="categoryDescription">Description:</label>
+                        <textarea id="categoryDescription" name="description"></textarea>
+                    </div>
+                    <button type="submit">Add Category</button>
+                </form>
+                <div id="categoryList" class="category-list"></div>
+            </section>
+
+            <section id="subscriptions" class="section">
+                <h2>Email Subscriptions</h2>
+                <div id="subscriptionsList"></div>
+                <button id="exportSubscriptions">Export Subscribers</button>
+            </section>
+
+            <section id="transactions" class="section">
+                <h2>Transaction History</h2>
+                <div class="filter-bar">
+                    <div class="form-group">
+                        <label for="startDate">From:</label>
+                        <input type="date" id="startDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">To:</label>
+                        <input type="date" id="endDate">
+                    </div>
+                    <button id="filterTransactions">Filter</button>
+                </div>
+                <div id="transactionsList"></div>
+            </section>
+
+            <section id="gallery" class="section">
+                <h2>Gallery Manager</h2>
+                <form id="galleryForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="galleryTitle">Title:</label>
+                        <input type="text" id="galleryTitle" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="galleryDescription">Description:</label>
+                        <textarea id="galleryDescription" name="description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="galleryImage">Image:</label>
+                        <input type="file" id="galleryImage" name="image" accept="image/*" required>
+                    </div>
+                    <button type="submit">Add Gallery Item</button>
+                </form>
+                <div id="galleryList" class="gallery-list"></div>
+            </section>
+
+            <section id="calendar" class="section">
+                <h2>Calendar Events</h2>
+                <form id="eventForm">
+                    <div class="form-group">
+                        <label for="eventDate">Event Date:</label>
+                        <input type="date" id="eventDate" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventTitle">Event Title:</label>
+                        <input type="text" id="eventTitle" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventPrice">Seat Price ($):</label>
+                        <input type="number" id="eventPrice" name="price" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventRecurring">Recurring Event:</label>
+                        <select id="eventRecurring" name="recurring">
+                            <option value="none">None</option>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventIcon">Event Icon:</label>
+                        <input type="file" id="eventIcon" name="icon" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label for="eventQR">QR Code:</label>
+                        <input type="file" id="eventQR" name="qr" accept="image/*">
+                    </div>
+                    <button type="submit">Create Event</button>
+                </form>
+                <div id="eventsList"></div>
+            </section>
+
+            <!-- User Management Section -->
+            <section id="users" class="section" style="display: none;">
+                <h2>User Management</h2>
+
+                <!-- User Form -->
+                <form id="userForm" class="admin-form">
+                    <input type="hidden" name="userId">
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userRole">Role</label>
+                        <select id="userRole" name="role" required>
+                            <option value="">Select Role</option>
+                            <option value="admin">Admin</option>
+                            <option value="manager">Manager</option>
+                            <option value="user">User</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userStatus">Status</label>
+                        <select id="userStatus" name="status" required>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Save User</button>
+                        <button type="reset" class="btn-secondary">Reset</button>
+                    </div>
+                </form>
+
+                <!-- User List -->
+                <div id="userList" class="admin-list">
+                    <!-- Users will be dynamically inserted here -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="../scripts/admin/admin.js" type="module"></script>
+</body>
+
+</html>

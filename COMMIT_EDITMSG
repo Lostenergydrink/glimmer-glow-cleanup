@@ -1,0 +1,19 @@
+Ton of node.js edits-unfinished and still TS
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch is up to date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   admin/admin.js
+#	modified:   admin/index.html
+#	new file:   admin/login.html
+#	modified:   admin/style.css
+#	modified:   package-lock.json
+#	modified:   package.json
+#	deleted:    public/server.js
+#	modified:   server/server.js
+#	modified:   server/shop-models.js
+#

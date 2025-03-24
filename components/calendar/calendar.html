@@ -1,0 +1,31 @@
+<section id="calendar-section" class="calendar-section">
+  <div class="calendar-container">
+    <h2 class="calendar-title">Upcoming Events</h2>
+    <div class="calendar-nav">
+      <button id="prev-month" class="calendar-nav-btn" title="Previous Month" aria-label="Go to previous month">
+        <svg viewBox="0 0 24 24" class="calendar-nav-icon" aria-hidden="true">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+        </svg>
+      </button>
+      <h3 id="calendar-month" class="calendar-month">Loading...</h3>
+      <button id="next-month" class="calendar-nav-btn" title="Next Month" aria-label="Go to next month">
+        <svg viewBox="0 0 24 24" class="calendar-nav-icon" aria-hidden="true">
+          <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"></path>
+        </svg>
+      </button>
+    </div>
+    <div id="calendar-grid" class="calendar-grid"></div>
+  </div>
+
+  <!-- Event Modal -->
+  <div id="event-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" aria-label="Close modal">&times;</span>
+      <h2 id="modal-title"></h2>
+      <div id="modal-details"></div>
+      <a id="modal-paypal" href="#" class="paypal-button" target="_blank" rel="noopener noreferrer">
+        Book Now with PayPal
+      </a>
+    </div>
+  </div>
+</section>

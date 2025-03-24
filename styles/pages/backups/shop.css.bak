@@ -1,0 +1,300 @@
+/* 
+ * SHOP PAGE SPECIFIC STYLES
+ * This file contains styles specific to the shop.html page.
+/* Remember to use global utility classes from global.css for common styles */
+ * Global styles, modal styles, and calendar styles have been moved to separate files.
+ */
+
+/* ------------------- SHOP LAYOUT ------------------- */
+.shop-container1 {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+
+.shop-container2 {
+  width: 100%;
+  display: flex;
+  max-width: 1320px;
+  align-items: center;
+  padding-top: var(--dl-space-space-sixunits);
+  padding-left: var(--dl-space-space-tripleunit);
+  padding-right: var(--dl-space-space-tripleunit);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-sixunits);
+}
+
+.shop-main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.shop-container3 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.shop-text1 {
+  font-size: 2.5em;
+  margin-bottom: var(--dl-space-space-doubleunit);
+  background-image: linear-gradient(310deg, #7928ca, #ff0080);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ------------------- SHOP GRID & ITEMS ------------------- */
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  width: 100%;
+  margin-bottom: var(--dl-space-space-tripleunit);
+}
+
+.shop-item {
+  display: flex;
+  padding: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  flex-direction: column;
+  background-color: white;
+}
+
+.shop-item-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.shop-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.shop-item p {
+  color: #666;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.shop-item-price {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: var(--dl-color-secondary-700);
+}
+
+/* ------------------- SUBSCRIPTION ITEMS ------------------- */
+.subscription-item {
+  border-left: 4px solid #7928ca;
+}
+
+.subscription-features {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.subscription-features li {
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.subscription-features li:before {
+  content: "✓";
+  color: #7928ca;
+  position: absolute;
+  left: -20px;
+}
+
+/* ------------------- PATREON CTA ------------------- */
+.patreon-cta {
+  width: 100%;
+  padding: 40px 30px;
+  margin-top: 30px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #f6f6f6;
+}
+
+.patreon-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.patreon-icon {
+  font-size: 3rem;
+  color: #f96854;
+  margin-bottom: 20px;
+}
+
+.patreon-button {
+  display: inline-block;
+  padding: 12px 25px;
+  margin-top: 20px;
+  color: white;
+  font-weight: bold;
+  border-radius: 30px;
+  background-color: #f96854;
+  transition: all 0.2s ease;
+}
+
+.patreon-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(249, 104, 84, 0.3);
+}
+
+/* ------------------- BOOK A PARTY SECTION ------------------- */
+.book-party-section {
+  width: 100%;
+  padding: 60px 0;
+  background-color: #f9f9f9;
+}
+
+.book-party-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.book-party-content {
+  text-align: center;
+}
+
+.book-party-title {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  background-image: linear-gradient(310deg, #7928ca, #ff0080);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.book-party-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 40px 0;
+  gap: 30px;
+}
+
+.book-party-feature {
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+  padding: 30px 20px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.book-party-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #7928ca;
+}
+
+.book-party-button {
+  display: inline-block;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(310deg, #7928ca, #ff0080);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.book-party-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(121, 40, 202, 0.3);
+}
+
+/* ------------------- CART MODAL ------------------- */
+.cart-container {
+  position: relative;
+}
+
+#cartCount {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 0.8rem;
+  text-align: center;
+  border-radius: 50%;
+  background-color: white;
+  color: #ff0080;
+  font-weight: bold;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-total {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  text-align: right;
+}
+
+#paypal-button-container {
+  margin-top: 30px;
+}
+
+/* ------------------- RESPONSIVE STYLES ------------------- */
+@media (max-width: 991px) {
+  .shop-container2 {
+    padding-left: var(--dl-space-space-doubleunit);
+    padding-right: var(--dl-space-space-doubleunit);
+  }
+  
+  .shop-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .shop-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  
+  .book-party-features {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .book-party-feature {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 479px) {
+  .shop-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .shop-text1 {
+    font-size: 2rem;
+  }
+  
+  .book-party-title {
+    font-size: 1.8rem;
+  }
+} 

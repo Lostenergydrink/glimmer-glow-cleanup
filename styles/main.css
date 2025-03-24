@@ -1,0 +1,115 @@
+/**
+ * Main CSS file
+ * Imports all component styles and defines global variables
+ */
+
+/* Base Styles */
+@import url('base/reset.css');
+@import url('base/typography.css');
+@import url('base/layout.css');
+@import url('base/colors.css');
+@import url('base/animations.css');
+
+/* Component Styles */
+@import url('components/header.css');
+@import url('components/footer.css');
+@import url('components/buttons.css');
+@import url('components/forms.css');
+@import url('components/cards.css');
+@import url('components/carousel.css');
+@import url('components/modals.css');
+@import url('components/cart.css');
+@import url('components/dialogs.css');
+@import url('components/notifications.css');
+
+/* Page Styles */
+@import url('pages/home.css');
+@import url('pages/about.css');
+@import url('pages/contact.css');
+@import url('pages/shop.css');
+@import url('pages/product.css');
+@import url('pages/account.css');
+
+/* Utility Styles */
+@import url('utils/spacing.css');
+@import url('utils/flexbox.css');
+@import url('utils/visibility.css');
+
+/* Root Variables */
+:root {
+  /* Colors */
+  --dl-color-pink-primary: #c9366f;
+  --dl-color-pink-hover: #b02e60;
+  --dl-color-pink-light: #f5e2ea;
+  --dl-color-lavender-primary: #9c89b8;
+  --dl-color-lavender-hover: #8776a3;
+  --dl-color-lavender-light: #efeaf5;
+  --dl-color-gold-primary: #daa520;
+  --dl-color-gold-hover: #c79b20;
+  --dl-color-gold-light: #f7f3e6;
+  
+  /* Neutral Colors */
+  --dl-color-black: #1a1a1a;
+  --dl-color-dark-gray: #333333;
+  --dl-color-gray: #777777;
+  --dl-color-light-gray: #cccccc;
+  --dl-color-lighter-gray: #eeeeee;
+  --dl-color-white: #ffffff;
+  
+  /* Status Colors */
+  --dl-color-success: #2ecc71;
+  --dl-color-warning: #f39c12;
+  --dl-color-error: #e74c3c;
+  --dl-color-info: #3498db;
+  
+  /* Font Sizes */
+  --dl-font-size-xs: 0.75rem;   /* 12px */
+  --dl-font-size-sm: 0.875rem;  /* 14px */
+  --dl-font-size-md: 1rem;      /* 16px */
+  --dl-font-size-lg: 1.125rem;  /* 18px */
+  --dl-font-size-xl: 1.25rem;   /* 20px */
+  --dl-font-size-2xl: 1.5rem;   /* 24px */
+  --dl-font-size-3xl: 1.875rem; /* 30px */
+  --dl-font-size-4xl: 2.25rem;  /* 36px */
+  --dl-font-size-5xl: 3rem;     /* 48px */
+  
+  /* Spacing */
+  --dl-space-xs: 0.25rem;   /* 4px */
+  --dl-space-sm: 0.5rem;    /* 8px */
+  --dl-space-md: 1rem;      /* 16px */
+  --dl-space-lg: 1.5rem;    /* 24px */
+  --dl-space-xl: 2rem;      /* 32px */
+  --dl-space-2xl: 3rem;     /* 48px */
+  --dl-space-3xl: 4rem;     /* 64px */
+  
+  /* Borders */
+  --dl-border-radius-sm: 0.125rem; /* 2px */
+  --dl-border-radius-md: 0.25rem;  /* 4px */
+  --dl-border-radius-lg: 0.5rem;   /* 8px */
+  --dl-border-radius-xl: 1rem;     /* 16px */
+  --dl-border-radius-full: 9999px;
+  
+  /* Shadows */
+  --dl-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --dl-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --dl-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --dl-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+  
+  /* Transitions */
+  --dl-transition-fast: 0.15s ease;
+  --dl-transition-normal: 0.3s ease;
+  --dl-transition-slow: 0.5s ease;
+  
+  /* Container Widths */
+  --dl-container-sm: 640px;
+  --dl-container-md: 768px;
+  --dl-container-lg: 1024px;
+  --dl-container-xl: 1280px;
+  
+  /* Z-index */
+  --dl-z-index-dropdown: 100;
+  --dl-z-index-sticky: 200;
+  --dl-z-index-modal: 300;
+  --dl-z-index-popover: 400;
+  --dl-z-index-tooltip: 500;
+} 

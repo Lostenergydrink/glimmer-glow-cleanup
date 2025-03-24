@@ -1,0 +1,244 @@
+/* Comprehensive Responsive Fixes for G&G Website 
+   This file contains fixes for mobile responsiveness issues
+*/
+
+/* ===== GLOBAL RESPONSIVE RULES ===== */
+@media (max-width: 991px) {
+  /* General container adjustments */
+  .container, 
+  [class*="-container"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: var(--dl-space-space-unit) !important;
+    padding-right: var(--dl-space-space-unit) !important;
+  }
+
+  /* Card adjustments */
+  [class*="-card"] {
+    width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Text size adjustments */
+  h1, .h1-size {
+    font-size: 2.5rem !important;
+  }
+  
+  h2, .h2-size {
+    font-size: 2rem !important;
+  }
+  
+  h3, .h3-size {
+    font-size: 1.5rem !important;
+  }
+  
+  p, span, .body-text {
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Convert row layouts to column on mobile */
+  [class*="-row"],
+  .row-layout,
+  [class*="container"] > div {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  /* Adjust spacing */
+  [class*="-section"] {
+    padding-top: var(--dl-space-space-doubleunit) !important;
+    padding-bottom: var(--dl-space-space-doubleunit) !important;
+  }
+  
+  /* Text size adjustments */
+  h1, .h1-size {
+    font-size: 2rem !important;
+  }
+  
+  h2, .h2-size {
+    font-size: 1.75rem !important;
+  }
+  
+  /* Card adjustments */
+  [class*="-card"] {
+    width: 95% !important;
+    padding: var(--dl-space-space-unit) !important;
+  }
+  
+  /* Image adjustments */
+  img:not(.logo-image):not(.icon):not(.event-icon) {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+  
+  /* Fix for absolute positioned images */
+  [class*="-image"]:not(.logo-image):not(.icon):not(.event-icon) {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    opacity: 0.2 !important;
+    border-radius: 0 !important;
+    margin-bottom: var(--dl-space-space-unit) !important;
+  }
+}
+
+@media (max-width: 479px) {
+  /* Even smaller screens */
+  [class*="-card"] {
+    width: 100% !important;
+    padding: var(--dl-space-space-halfunit) !important;
+  }
+  
+  h1, .h1-size {
+    font-size: 1.75rem !important;
+  }
+  
+  h2, .h2-size {
+    font-size: 1.5rem !important;
+  }
+  
+  h3, .h3-size {
+    font-size: 1.25rem !important;
+  }
+  
+  /* Adjust padding */
+  [class*="-section"],
+  [class*="-container"] {
+    padding-left: var(--dl-space-space-halfunit) !important;
+    padding-right: var(--dl-space-space-halfunit) !important;
+  }
+}
+
+/* ===== SPECIFIC SECTION FIXES ===== */
+
+/* Testimonials Section Fix */
+@media (max-width: 767px) {
+  .testimonial-wrapper,
+  .testimonial-container {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  
+  .testimonial-card {
+    width: 95% !important;
+    margin: var(--dl-space-space-unit) 0 !important;
+  }
+  
+  .testimonial-content {
+    padding: var(--dl-space-space-unit) !important;
+  }
+}
+
+/* Calendar Section Fix */
+@media (max-width: 767px) {
+  .calendar-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+  }
+  
+  .calendar {
+    min-width: 480px !important;
+  }
+}
+
+/* Experience Section Fix */
+@media (max-width: 767px) {
+  .experience-container,
+  .new-experience-container {
+    align-items: center !important;
+    min-height: auto !important;
+  }
+  
+  .experience-card,
+  .new-experience-card {
+    width: 95% !important;
+    margin: var(--dl-space-space-unit) 0 !important;
+    z-index: 2 !important;
+  }
+  
+  .experience-hero,
+  .new-experience-hero {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+/* Footer Fix */
+@media (max-width: 767px) {
+  .footer-container1,
+  .footer-container2,
+  .footer-container3 {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  .footer-container2 > div,
+  .footer-container3 > div {
+    margin-bottom: var(--dl-space-space-unit) !important;
+  }
+}
+
+/* Gallery Fix */
+@media (max-width: 767px) {
+  .gallery-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .gallery-image-container {
+    height: 250px !important;
+  }
+}
+
+/* Header Menu Fix */
+@media (max-width: 767px) {
+  .header-menu {
+    display: none !important;
+  }
+  
+  .header-burger-menu {
+    display: flex !important;
+  }
+  
+  .header-mobile-menu {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    padding: var(--dl-space-space-doubleunit) !important;
+    z-index: 100 !important;
+    position: fixed !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.3s !important;
+    flex-direction: column !important;
+    background-color: var(--dl-color-gray-white) !important;
+  }
+  
+  .header-mobile-menu.active {
+    transform: translateX(0) !important;
+  }
+}
+
+/* Fix for any flex containers that should stack on mobile */
+@media (max-width: 767px) {
+  .stack-on-mobile {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .stack-on-mobile > * {
+    width: 100% !important;
+    margin-bottom: var(--dl-space-space-unit) !important;
+  }
+}
+
+/* Fix for any grid layouts */
+@media (max-width: 767px) {
+  .grid-layout {
+    grid-template-columns: 1fr !important;
+  }
+}

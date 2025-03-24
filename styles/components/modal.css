@@ -1,0 +1,106 @@
+/* 
+ * MODAL COMPONENT STYLES
+ * This file contains styles for modal components used across multiple pages.
+ * These styles have been consolidated from gallery.css, index.css, contact.css, and shop.css.
+ */
+
+/* ------------------- BASE MODAL STYLES ------------------- */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  position: relative;
+  background-color: white;
+  margin: 10% auto;
+  padding: var(--dl-space-space-tripleunit);
+  width: 80%;
+  max-width: 800px;
+  border-radius: var(--dl-radius-radius-radius1);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #333;
+}
+
+.modal-header {
+  margin-bottom: var(--dl-space-space-doubleunit);
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  margin-bottom: var(--dl-space-space-unit);
+}
+
+.modal-body {
+  margin-bottom: var(--dl-space-space-doubleunit);
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ------------------- GALLERY MODAL SPECIFIC STYLES ------------------- */
+.gallery-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+}
+
+.gallery-modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+/* ------------------- RESPONSIVE STYLES ------------------- */
+@media (max-width: 767px) {
+  .modal-content {
+    width: 95%;
+    margin: 10% auto;
+    padding: var(--dl-space-space-unit);
+  }
+}
+
+@media (max-width: 479px) {
+  .modal-content {
+    margin: 5% auto;
+    padding: var(--dl-space-space-halfunit);
+  }
+  
+  .modal-title {
+    font-size: 1.2rem;
+  }
+} 
