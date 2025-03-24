@@ -51,6 +51,22 @@ body {
   max-width: 500px;
   margin: 0 auto;
   display: block;
+  border: none;
+  overflow: hidden;
+  height: auto;
+  min-height: 300px;
+  /* Default height */
+  transition: height 0.3s ease;
+  /* Smooth height transitions */
+}
+
+/* Dynamic heights for different content types */
+.facebook-review-frame.tall {
+  min-height: 400px;
+}
+
+.facebook-review-frame.medium {
+  min-height: 350px;
 }
 
 /* Mobile responsive adjustments */
@@ -72,7 +88,28 @@ body {
 
   .facebook-review-frame {
     height: auto;
-    min-height: 250px;
+    min-height: 280px;
+    max-width: 90%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  .facebook-review-frame.tall {
+    min-height: 350px;
+  }
+
+  .facebook-review-frame.medium {
+    min-height: 320px;
+  }
+
+  .testimonial-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 0 10px;
+  }
+
+  .testimonial-nav {
+    margin-top: 15px;
   }
 }
 
@@ -91,6 +128,48 @@ body {
   .event-icon {
     width: 16px;
     height: 16px;
+  }
+
+  .facebook-review-frame {
+    min-height: 250px;
+    max-width: 100%;
+  }
+
+  .facebook-review-frame.tall {
+    min-height: 300px;
+  }
+
+  .facebook-review-frame.medium {
+    min-height: 270px;
+  }
+
+  /* Improve touch targets for carousel navigation */
+  .testimonial-nav button {
+    width: 15px;
+    height: 15px;
+    margin: 0 8px;
+  }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 360px) {
+  .facebook-review-frame {
+    min-height: 220px;
+  }
+
+  .facebook-review-frame.tall {
+    min-height: 270px;
+  }
+
+  .facebook-review-frame.medium {
+    min-height: 240px;
+  }
+}
+
+/* Fix iOS-specific issues with iframes */
+@supports (-webkit-touch-callout: none) {
+  .facebook-review-frame {
+    -webkit-overflow-scrolling: touch;
   }
 }
 

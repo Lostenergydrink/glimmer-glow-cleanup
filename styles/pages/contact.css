@@ -327,6 +327,57 @@
     rgba(0, 0, 0, 0.15) 0px 8px 16px -8px;
 }
 
+.contact-form__input.has-error,
+.contact-form__textarea.has-error {
+  border-color: var(--dl-color-danger-300);
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
+}
+
+.contact-form__error {
+  display: none;
+  color: var(--dl-color-danger-300);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+/* Message notifications */
+.contact-form__message {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 1rem;
+  border-radius: var(--dl-radius-radius-radius5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-width: 400px;
+  animation: slideIn 0.3s ease-out;
+}
+
+.contact-form__message--success {
+  background-color: var(--dl-color-success-100);
+  color: var(--dl-color-success-700);
+  border: 1px solid var(--dl-color-success-300);
+}
+
+.contact-form__message--error {
+  background-color: var(--dl-color-danger-100);
+  color: var(--dl-color-danger-700);
+  border: 1px solid var(--dl-color-danger-300);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 /* ==========================================================================
    CONTACT INFO
    ========================================================================== */
@@ -597,4 +648,4 @@
   .contact-info__social {
     flex-wrap: wrap;
   }
-} 
+}
