@@ -185,6 +185,14 @@ export const requireOwnership = (getResourceOwner) => {
       const ownerId = await getResourceOwner(req);
 
       if (ownerId !== req.user.id) {
+        // Log unauthorized resource access
+        authService.logAuthEvent(req.user.id, 'unauthorized_resource_access', {
+          ip: req.ip,
+          userAgent: req.headers['user-agent'],
+          resourceOwnerId: ownerId,
+          resourcePath: req.path
+        });
+        
         return res.status(403).json({ error: 'Resource access denied' });
       }
 

@@ -173,6 +173,16 @@ class ApiService {
     }
     return this.csrfToken;
   }
+
+  /**
+   * Cancel all pending requests
+   */
+  cancelAllRequests() {
+    for (const controller of this.pendingRequests.values()) {
+      controller.abort();
+    }
+    this.pendingRequests.clear();
+  }
 }
 
 // Export singleton instance

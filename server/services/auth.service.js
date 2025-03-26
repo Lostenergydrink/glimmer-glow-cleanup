@@ -606,6 +606,25 @@ class AuthService {
   }
 
   /**
+   * Clean up expired tokens from invalidated tokens table
+   * @returns {Promise<void>}
+   * @private
+   */
+  async cleanupInvalidatedTokens() {
+    try {
+      const now = new Date();
+      const { error } = await this.supabase
+        .from('invalidated_tokens')
+        .delete()
+        .lt('invalidated_at', new Date(now - 30 * 24 * 60 * 60 * 1000).toISOString()); // Remove tokens older than 30 days
+
+      if (error) throw error;
+    } catch (error) {
+      errorHandler(error, 'Cleanup invalidated tokens');
+    }
+  }
+
+  /**
    * Invalidate all sessions for a user
    * @param {string} userId - User ID
    * @param {string} [excludeSessionId] - Session ID to exclude from invalidation
